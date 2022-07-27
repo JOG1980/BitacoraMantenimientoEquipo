@@ -13,7 +13,8 @@ class EquipoController extends Controller
 
     //por convencion el metodo que muestra la pagina principal es index()
     public function index(){
-        return "lista de equipos"; 
+        //return "lista de equipos";
+        return view('equipos.index'); 
     }
 
     //por convencion el metodo que crea es create()

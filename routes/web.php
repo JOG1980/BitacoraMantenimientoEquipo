@@ -23,9 +23,9 @@ Route::get('/', function () {
 });
 
 //rutas para el equipo ----------
-Route::get('equipo', [EquipoController::class,'index']);
-Route::get('equipo/create', [EquipoController::class,'create']);
-Route::get('equipo/{equipo}', [EquipoController::class,'show']);
+Route::get('equipos', [EquipoController::class,'index']);
+Route::get('equipos/create', [EquipoController::class,'create']);
+Route::get('equipos/{equipo}', [EquipoController::class,'show']);
 
 //rutas para la orden ----------
 Route::get('orden', OrdenController::class);  //por default llama invoke() del controlador
