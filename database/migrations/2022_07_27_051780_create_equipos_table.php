@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipos', function (Blueprint $table) {
-            //$table->id();
-            $table->bigIncrements('id_equipo'); 
+            $table->id('id_equipo');
+            //$table->bigIncrements('id_equipo'); 
             $table->string('r3');
             $table->string('descripcion');
             //$table->string('marca');
@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('numero_serie');
             //$table->string('estado_registro');
             //$table->string('orden');
-            $table->foreignId('id_marca')->references('id_marca')->on('marcas'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_modelo')->references('id_modelo')->on('modelos'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_estado_registro')->references('id_estado_registro')->on('estados_registros'); //debe estar creada primero la tabla en la migracion???
+            $table->foreignId('id_marca')->references('id_marca')->on('marcas')->nullable(); //debe estar creada primero la tabla en la migracion???
+            $table->foreignId('id_modelo')->references('id_modelo')->on('modelos')->nullable(); //debe estar creada primero la tabla en la migracion???
+            $table->foreignId('id_estado_equipo')->references('id_estado_equipo')->on('estados_equipos')->nullable(); //debe estar creada primero la tabla en la migracion???
+            $table->foreignId('id_estado_registro')->references('id_estado_registro')->on('estados_registros')->nullable(); //debe estar creada primero la tabla en la migracion???
             
             $table->timestamps();
         });

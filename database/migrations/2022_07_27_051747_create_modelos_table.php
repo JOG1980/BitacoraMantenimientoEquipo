@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('modelos', function (Blueprint $table) {
             $table->id('id_modelo');
             //$table->bigIncrements('id_modelo'); 
-            $table->string('nombre_modelo');
+            $table->string('nombre_modelo',100);
             $table->text('descripcion')->nullable();
-            $table->foreignId('id_marca')->references('id_marca')->on('marcas'); //debe estar creada primero la tabla personal en la migracion???
+            $table->foreignId('id_marca')->references('id_marca')->on('marcas')->nullable(); //debe estar creada primero la tabla personal en la migracion???
             
             $table->timestamps();
         });

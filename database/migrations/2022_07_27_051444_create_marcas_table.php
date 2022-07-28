@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('marcas', function (Blueprint $table) {
             $table->id('id_marca');
             //$table->bigIncrements('id_marca');
-            $table->string('nombre_marca');
+            $table->string('nombre_marca',100);
             $table->timestamps();
         });
     }
