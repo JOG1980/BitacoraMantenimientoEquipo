@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marcas', function (Blueprint $table) {
-            $table->id('id_marca');
-            //$table->bigIncrements('id_marca');
-            $table->string('nombre_marca',100)->unique();
+        Schema::create('subestaciones', function (Blueprint $table) {
+            $table->id('id_subestacion');
+            $table->string('nombre_subestacion',100)->unique();
+            $table->string('siglas_subestacion',5)->unique();
+            $table->foreignId('id_zona')->references('id_zona')->on('zonas'); //debe estar creada primero la tabla  en la migracion???
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marcas');
+        Schema::dropIfExists('subestaciones');
     }
 };

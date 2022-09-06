@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estados_equipos', function (Blueprint $table) {
-            //$table->id();
-            $table->id('id_estado_equipo');
-            //$table->bigIncrements('id_modelo'); 
-            $table->string('nombre_estado_equipo',100);
-            $table->text('descripcion')->nullable();
+        Schema::create('gerencias', function (Blueprint $table) {
+            
+            $table->id('id_gerencia');
+            $table->string('nombre_gerencia',100)->unique();
+            $table->string('siglas_gerencia',10)->unique();
+            
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estados_equipos');
+        Schema::dropIfExists('gerencias');
     }
 };

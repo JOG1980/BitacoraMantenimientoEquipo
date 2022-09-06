@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modelos', function (Blueprint $table) {
-            $table->id('id_modelo');
+        Schema::create('estados_equipos', function (Blueprint $table) {
+            //$table->id();
+            $table->id('id_estado_equipo');
             //$table->bigIncrements('id_modelo'); 
-            $table->string('nombre_modelo',100)->unique();
+            $table->string('nombre_estado_equipo',100)->unique();
             $table->text('descripcion')->nullable();
-            $table->foreignId('id_marca')->references('id_marca')->on('marcas')->nullable(); //debe estar creada primero la tabla personal en la migracion???
-            
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modelos');
+        Schema::dropIfExists('estados_equipos');
     }
 };

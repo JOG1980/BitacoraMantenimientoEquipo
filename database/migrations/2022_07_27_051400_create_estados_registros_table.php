@@ -17,7 +17,7 @@ return new class extends Migration
             //$table->id();
             $table->id('id_estado_registro');
             //$table->bigIncrements('id_modelo'); 
-            $table->string('nombre_estado_registro',100);
+            $table->string('nombre_estado_registro',100)->unique();
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });
