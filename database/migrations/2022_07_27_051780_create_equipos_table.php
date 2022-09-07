@@ -19,17 +19,21 @@ return new class extends Migration
             $table->string('r3')->unique();
             $table->string('descripcion');
             $table->string('numero_serie')->nullable();
-            // $table->foreignId('id_subestacion')->references('id_subestacion')->on('subestaciones')->nullable(); //debe estar creada primero la tabla en la migracion???
-            // $table->foreignId('id_marca')->references('id_marca')->on('marcas')->nullable(); //debe estar creada primero la tabla en la migracion???
-            // $table->foreignId('id_modelo')->references('id_modelo')->on('modelos')->nullable(); //debe estar creada primero la tabla en la migracion???
-            // $table->foreignId('id_estado_equipo')->references('id_estado_equipo')->on('estados_equipos')->nullable(); //debe estar creada primero la tabla en la migracion???
-            // $table->foreignId('id_estado_registro')->references('id_estado_registro')->on('estados_registros')->nullable(); //debe estar creada primero la tabla en la migracion???
             
-            $table->foreignId('id_subestacion')->nullable()->references('id_subestacion')->on('subestaciones')->onDelete('cascade'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_marca')->nullable()->references('id_marca')->on('marcas')->onDelete('cascade'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_modelo')->nullable()->references('id_modelo')->on('modelos')->onDelete('cascade'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_estado_equipo')->nullable()->references('id_estado_equipo')->on('estados_equipos')->onDelete('cascade'); //debe estar creada primero la tabla en la migracion???
-            $table->foreignId('id_estado_registro')->nullable()->references('id_estado_registro')->on('estados_registros')->onDelete('cascade'); //debe estar creada primero la tabla en la migracion???
+            // $table->foreignId('id_subestacion')->references('id_subestacion')->on('subestaciones')->nullable(); 
+            // $table->foreignId('id_marca')->references('id_marca')->on('marcas')->nullable(); 
+            // $table->foreignId('id_modelo')->references('id_modelo')->on('modelos')->nullable(); 
+            // $table->foreignId('id_estado_equipo')->references('id_estado_equipo')->on('estados_equipos')->nullable(); 
+            // $table->foreignId('id_estado_registro')->references('id_estado_registro')->on('estados_registros')->nullable(); 
+            
+            //NOTA 1: Para hacer la referencia primero debe de existir la tabla referenciada.
+            //NOTA 2: Con->nullable()->references('???')->on('???')->onDelete('cascade') se logra que las llaves foraneas (con restriccion) acepten null
+
+            $table->foreignId('id_subestacion')->nullable()->references('id_subestacion')->on('subestaciones')->onDelete('cascade'); 
+            $table->foreignId('id_marca')->nullable()->references('id_marca')->on('marcas')->onDelete('cascade'); 
+            $table->foreignId('id_modelo')->nullable()->references('id_modelo')->on('modelos')->onDelete('cascade'); 
+            $table->foreignId('id_estado_equipo')->nullable()->references('id_estado_equipo')->on('estados_equipos')->onDelete('cascade'); 
+            $table->foreignId('id_estado_registro')->nullable()->references('id_estado_registro')->on('estados_registros')->onDelete('cascade'); 
             
             $table->timestamps();
         });

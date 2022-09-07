@@ -48,5 +48,7 @@ class EquipoSeeder extends Seeder
         $equipo2->id_estado_equipo = 1; 
         $equipo2->id_estado_registro = 1; 
         $equipo2->save();
+
+        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-
+use App\Models\Equipo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -40,6 +40,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(EquipoSeeder::class);
 
+        //FACTORIES -------------------------------------------
+        Equipo::factory(50)->create();
 
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipo;
 use Illuminate\Http\Request;
 
 class EquipoController extends Controller
@@ -14,7 +15,12 @@ class EquipoController extends Controller
     //por convencion el metodo que muestra la pagina principal es index()
     public function index(){
         //return "lista de equipos";
-        return view('equipos.index'); 
+
+        //$equipos = Equipo::all();
+        $equipos = Equipo::paginate(20);  //mostramos 20 registros por pagina
+        
+        //return $equipos;
+        return view('equipos.index',compact('equipos')); 
     }
 
     //por convencion el metodo que crea es create()
