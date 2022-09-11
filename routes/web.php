@@ -22,8 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 //rutas para el equipo ----------
-Route::get('equipos', [EquipoController::class,'index']);
+Route::get('/equipos', [EquipoController::class,'index']);
 Route::get('equipos/create', [EquipoController::class,'create']);
 Route::get('equipos/{equipo}', [EquipoController::class,'show']);
 
